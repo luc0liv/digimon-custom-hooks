@@ -1,10 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import useFetch from '../hooks/useFetch';
 import useValidInputs from '../hooks/useValidInputs';
+import DigimonCard from './DigimonCard';
 
 function DigimonForm() {
   const digimonName = useValidInputs('');
   const { data, fetchData, loading } = useFetch(`https://digimon-api.vercel.app/api/digimon/name/${digimonName.inputValue}`);
+  const { data: digimonList, fetchData: fetchDigimonList } = useFetch('https://digimon-api.vercel.app/api/digimon');
+
+  const MAX_INDEX = 20;
 
   const fetchDigimon = () => {
     digimonName.validateField();
@@ -37,6 +42,21 @@ function DigimonForm() {
           )) }
         { loading && <h2>Carregando...</h2>}
       </div>
+      <section className="digimon-list">
+        <button
+          type="button"
+          onClick={ fetchDigimonList }
+        >
+          Me mostre mais digimons!
+        </button>
+        { digimonList && digimonList
+          .filter((digimon, index) => index < MAX_INDEX)
+          .map((digimon) => (<DigimonCard
+            key={ digimon.name }
+            name={ digimon.name }
+            image={ digimon.img }
+          />))}
+      </section>
     </div>
   );
 }
