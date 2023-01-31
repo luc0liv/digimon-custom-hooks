@@ -1,4 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
+  background-color: rgb(140, 172, 215);
+  height: 100vh;
   text-align: center;
 }
 
@@ -26,6 +33,31 @@
 
 .App-link {
   color: #61dafb;
+}
+
+h1 {
+  color:rgb(27, 17, 117);
+  margin-bottom: 1rem;
+}
+
+.digi-name {
+  color:rgb(27, 17, 117);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.digi-input , .digi-button {
+  border: 0;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  padding: 6px 8px;
+}
+
+.digi-button {
+  background-color: rgb(13, 13, 13);
+  color: rgb(243, 242, 242);
+  font-weight: 700;
 }
 
 @keyframes App-logo-spin {
